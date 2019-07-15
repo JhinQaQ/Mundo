@@ -1,5 +1,5 @@
 # Mundo
-a slight java frameWork use MVC
+该如何去做一个Javaweb MVC框架，a slight java frameWork use MVC
 
 
 我自己是很不喜欢做一个CRUD boy的，所以不管是在学语言本身还是在框架的学习中，我更倾向去配套学一些偏底层的东西，而不是单纯的去学业务的实现。
