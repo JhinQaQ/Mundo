@@ -3,21 +3,25 @@ package com.jhin.mundo;
 import com.jhin.mundo.route.Route;
 import com.jhin.mundo.route.RouteMatcher;
 import com.jhin.mundo.route.Routers;
+import com.jhin.mundo.servlet.wrapper.*;
 import com.jhin.mundo.util.PathUtil;
-import jdk.nashorn.internal.runtime.linker.Bootstrap;
-import org.omg.CORBA.Request;
-import sun.reflect.misc.ReflectUtil;
+import com.jhin.mundo.util.ReflectUtil;
 
-import javax.servlet.*;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.xml.ws.Response;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
-import java.util.logging.Filter;
 import java.util.logging.LogRecord;
 import java.util.logging.Logger;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 /*
 接收用户请求
 查找路由
@@ -33,16 +37,16 @@ public class MundoFilter implements Filter {
 
     private ServletContext servletContext;
 
-    private  void init (FilterConfig filterConfig )throws ServletException{
+    public void init (FilterConfig filterConfig )throws ServletException{
         Mundo mundo = Mundo.me();
         if (!mundo.isInit()){
             String className = filterConfig.getInitParameter("bootstrap");
-            Bootstrap bootstrap = this.getBpptstrap();
+            Bootstrap bootstrap = this.getBootstrap(className );
             bootstrap.init(mundo);
 
-            Routers routers = mundo.setRouter();
+            Routers routers = mundo.getRouters();
             if(null != routers){
-                routeMatcher.setRoutes(routes.getRoutes());
+                routeMatcher.setRoutes(routers.getRoutes());
 
             }
             servletContext = filterConfig.getServletContext();
@@ -89,6 +93,11 @@ public class MundoFilter implements Filter {
         }
     }
 
+    @Override
+    public void destroy() {
+
+    }
+
     private void handle(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, Route route){
 
         // 初始化上下文
@@ -132,13 +141,10 @@ public class MundoFilter implements Filter {
         method.setAccessible(true);
         if(len > 0){
             Object[] args = getArgs(request, response, method.getParameterTypes());
-            return ReflectUtil.invokeMethod(object, method, args);
+            return ReflectUtil.invokeMehod(object, method, args);
         } else {
             return ReflectUtil.invokeMehod(object, method);
         }
     }
-    @Override
-    public boolean isLoggable(LogRecord record) {
-        return false;
-    }
+
 }

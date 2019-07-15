@@ -1,11 +1,11 @@
 package com.jhin.mundo;
 
+import com.jhin.mundo.servlet.wrapper.Request;
+import com.jhin.mundo.servlet.wrapper.Response;
 import lombok.Getter;
 import lombok.Setter;
-import org.omg.CORBA.Request;
 
 import javax.servlet.ServletContext;
-import javax.xml.ws.Response;
 
 public class MundoContext {
     private static final ThreadLocal<MundoContext> CONTEXT_THREAD_LOCAL = new ThreadLocal<MundoContext>();
@@ -24,7 +24,7 @@ public class MundoContext {
         return CONTEXT_THREAD_LOCAL.get();
     }
 
-    public static void initContext(ServletContext context,Request request ,Response reponse){
+    public static void initContext(ServletContext context, com.jhin.mundo.servlet.wrapper.Request request , com.jhin.mundo.servlet.wrapper.Response reponse){
         MundoContext mundoContext = new MundoContext();
         mundoContext.context = context;
         mundoContext.request = request;

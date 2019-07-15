@@ -6,6 +6,7 @@ Mundo中所有的配置在Mundo全局唯一对象完成，所以设计成单例
  */
 
 import com.jhin.mundo.config.ConfigLoader;
+import com.jhin.mundo.render.Render;
 import com.jhin.mundo.route.Routers;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,6 +25,7 @@ public class Mundo {
 
     @Getter
     @Setter private boolean init = false;
+    @Getter@Setter private Render render;
 
     private Mundo(){
         routers = new Routers();
@@ -69,6 +71,8 @@ public class Mundo {
         }
         return this;
     }
+
+
 
 
 }
