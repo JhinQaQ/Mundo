@@ -1,12 +1,12 @@
 # Mundo
-a slight java frameWork use MVC
+该如何去做一个Javaweb MVC框架，a slight java frameWork use MVC
 
 
 我自己是很不喜欢做一个CRUD boy的，所以不管是在学语言本身还是在框架的学习中，我更倾向去配套学一些偏底层的东西，而不是单纯的去学业务的实现。
 
 在深入一点的了解了一些概念和方法论之后，我想自己也试一试去写一个轻量级的框架，这样可能加深我对于Spring等框架的理解。
 
-这篇笔记的起因是我看了GitHub上面的一个轻量级框架blade（https://github.com/lets-blade/blade），所以也想试试，能不能依葫芦画个瓢出来。
+这篇笔记的起因是我看了GitHub上面的一个轻量级框架blade （ https://github.com/lets-blade/blade ），所以也想试试，能不能依葫芦画个瓢出来。
 
 有预感这会是一个跨度有点大的笔记，所以我拿日期作为每段的标题了
 
