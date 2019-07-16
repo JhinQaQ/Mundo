@@ -19,7 +19,7 @@
 结构如下：
 
 
-![Mundo1.png](https://i.loli.net/2019/07/11/5d26f1f2daa5658234.png)
+![Mundo1.png](https://i.loli.net/2019/07/15/5d2c2cf142a2b65587.png)
 
 #### Route类的设计
 
@@ -270,3 +270,15 @@ public class RouteMatcher {
 ```
 
 用正则去匹配路由的集合
+
+#### July15
+
+---
+
+总算是一边看人家的代码，一边Google的把这给弄好了 参考 https://github.com/biezhi 的文档和项目
+
+#### 待解决问题：
+
+emmm，在idea里export出jar是一件比较麻烦的事情，尤其是我根本没有main方法在这个框架里的时候
+
+在这里遇到了一点问题，如果有清楚怎么用的同学，可以给我留言，谢谢啦
